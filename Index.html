@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .caja-principal {
+            width: 300px;
+            margin: 50px auto;
+            background-color: white;
+            border: 2px solid #ff8c00;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .campo {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 90%;
+            padding: 5px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #00bcd4;
+            color: white;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #008ba3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="caja-principal">
+        <h2>Ubicacion</h2>
+        
+        <div class="campo">
+            <label>Nombre de la Ubicacion</label>
+            <br>
+            <input type="text" id="nombre" placeholder="Nombre Ubicacion">
+        </div>
+        
+        <div class="campo">
+            <label>Latitud</label>
+            <br>
+            <input type="text" id="latitud" value="28.3537921">
+        </div>
+        
+        <div class="campo">
+            <label>Longitud</label>
+            <br>
+            <input type="text" id="longitud" value="-81.5618197">
+        </div>
+        
+        <button onclick="abrirMapa()">Abrir Ubicacion</button>
+    </div>
+
+    <script>
+        function abrirMapa() {
+            var latitud = document.getElementById('latitud').value;
+            var longitud = document.getElementById('longitud').value;
+
+            latitud = latitud.replace(',', '.');
+            longitud = longitud.replace(',', '.');
+
+            if (latitud != "" && longitud != "") {
+                var enlace = "https://www.google.com/maps?q=" + latitud + "," + longitud;
+                window.open(enlace, '_blank');
+            } else {
+                alert("Faltan las coordenadas");
+            }
+        }
+    </script>
+
+</body>
+</html>
